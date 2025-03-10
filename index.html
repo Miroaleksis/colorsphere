@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="styles.css" rel="stylesheet" type="text/css">
+	<script defer src="styles.js"></script>
+    <title>Color converter</title>
+    <style>
+        input[type="range"] {
+            -webkit-appearance: none;
+        }
+    </style>
+</head>
+
+<body>
+	<header>
+		<div class="wrap">
+			<div class="logo">Colorsphere</div>
+			<button id="theme-toggle" aria-live="polite"></button>
+		</div>
+	</header>
+	<nav class="subnav">
+		<div class="wrap">
+			<ul>
+				<li><a href="index.html">Color converter</a></li>
+				<li><a href="#">Accessibility checker</a></li>
+				<li><a href="#">Palette creator</a></li>
+			</ul>
+		</div>
+	</nav>
+	
+	<main>
+		<h1>Color converter</h1>
+		<div class="container">
+			<div id="color-box" style="width: 160px; height: 160px;"></div>
+			<div class="input-wrapper">
+				<label for="hex">HEX</label>
+				<input type="text" id="hex" maxlength="7" value="#FFFFFF">
+				<button class="copy"></button>
+			</div>
+		</div>
+		<div class="row">
+			<div class="container">
+				<div class="input-wrapper">
+					<label for="rgb">RGB</label>
+					<input type="text" id="rgb">
+					<button class="copy"></button>
+				</div>
+				<div class="slider">
+					<label for="red">Red</label>
+					<input type="range" min="0" max="255" id="red">
+				</div>
+				<div class="slider">
+					<label for="green">Green</label>
+					<input type="range" min="0" max="255" id="green">
+				</div>
+				<div class="slider">
+					<label for="blue">Blue</label>
+					<input type="range" min="0" max="255" id="blue">
+				</div>
+			</div>
+			<div class="container">
+				<div class="input-wrapper">
+					<label for="hsl">HSL</label>
+					<input type="text" id="hsl">
+					<button class="copy"></button>
+				</div>
+				<div class="slider">
+					<label for="hue">Hue</label>
+					<input type="range" min="0" max="359" id="hue">
+				</div>
+				<div class="slider">
+					<label for="saturation">Saturation</label>
+					<input type="range" min="0" max="100" id="saturation">
+				</div>
+				<div class="slider">
+					<label for="lightness">Lightness</label>
+					<input type="range" min="0" max="100" id="lightness">
+				</div>
+			</div>
+			<div class="container">
+				<div class="input-wrapper">
+					<label for="cmyk">CMYK</label>
+					<input type="text" id="cmyk">
+					<button class="copy"></button>
+				</div>
+				<div class="slider">
+					<label for="cyan">Cyan</label>
+					<input type="range" min="0" max="100" id="cyan">
+				</div>
+				<div class="slider">
+					<label for="magenta">Magenta</label>
+					<input type="range" min="0" max="100" id="magenta">
+				</div>
+				<div class="slider">
+					<label for="yellow">Yellow</label>
+					<input type="range" min="0" max="100" id="yellow">
+				</div>
+				<div class="slider">
+					<label for="black">Key(black)</label>
+					<input type="range" min="0" max="100" id="black">
+				</div>
+			</div>
+		</div>
+		<script src="events.js"></script>
+	</main>
+
+</body>
+
+</html>

@@ -1,0 +1,260 @@
+@charset "utf-8";
+/* CSS Document */
+
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+@import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css);
+
+
+
+/* General */
+
+/* Color schemes */
+
+/* @media (prefers-color-scheme: dark) { */
+:root [data-theme="dark"] {
+    --dark: #F7F7F7;
+    --dark-grey: #EDEDED;
+    --grey: #8F8F8F;
+    --light-grey: #4D4D4D;
+    --light: #333333;
+    --primary: linear-gradient(90deg, #FDFF7F, #A1F1FF);
+	--transparent-light: rgba(255,255,255,.1);
+}
+/* } */
+
+/* @media (prefers-color-scheme: light) { */
+:root [data-theme="light"] {
+    --dark: #333333;
+    --dark-grey: #4D4D4D;
+    --grey: #8F8F8F;
+    --light-grey: #EDEDED;
+    --light: #F7F7F7;
+    --primary: linear-gradient(90deg, #FF0080, #0000FF);
+	--transparent-light: rgba(0,0,0,.1);
+}
+/* } */
+
+
+
+body {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	font-family: "Lato", serif;
+	text-align: center;
+	margin: 0;
+	background-color: var(--light);
+	color: var(--dark);
+}
+
+	h1, h2, h3 {
+		font-family: "Oswald", serif;
+		font-weight: 300;
+	}
+
+	h1 {
+		font-size: 2.5em;
+	}
+
+	a {
+		color: inherit;
+		text-decoration: none;
+	}
+
+	.wrap, main {
+		max-width: 1000px;
+		margin-left: 5%;
+		margin-right: 5%;
+		width: 90%;
+	}
+
+
+
+/* Headers*/
+
+my-header {
+	width: 100%;
+}
+
+	header {
+		display: flex;
+		justify-content: center;
+	}
+
+	.wrap {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+
+		.logo {
+			display: inline-block;
+			font-family: "Oswald", serif;
+			margin: 8px 0;
+			font-weight: 300;
+			font-size: 1.7em;
+			background: var(--primary);
+			-webkit-background-clip: text;
+			-webkit-text-fill-color: transparent;
+		}
+
+		button, .button {
+			display: flex;
+			gap: 8px;
+			align-items: center;
+			color: inherit;
+			font-family: inherit;
+			font-size: inherit;
+			background: none;
+			cursor: pointer;
+			border: 1.5px solid var(--light-grey);
+			padding: 8px;
+			border-radius: 4px;
+		}
+
+		button:hover, .button:hover {
+			border: 1.5px solid var(--grey);
+		}
+
+			[data-theme="dark"] #theme-toggle::before {
+				font-family: 'FontAwesome';
+				content: "\f185";
+			}
+
+			[data-theme="light"] #theme-toggle::before {
+				font-family: 'FontAwesome';
+				content: "\f186";
+			}
+
+my-subnav {
+	width: 100%;
+	position: sticky;
+	top: 0;
+	background-color: inherit;
+	z-index: 1;
+}
+
+	.subnav {
+		display: flex;
+		justify-content: center;
+		border-top: 1.5px solid var(--light-grey);
+		border-bottom: 1.5px solid var(--light-grey);
+	}
+
+		.subnav ul {
+			display: flex;
+			margin: 0 auto;
+			padding: 0;
+			flex-wrap: wrap;
+			gap: 32px;
+		}
+
+			.subnav li {
+				display: inline-flex;
+			}
+
+				.subnav a {
+					padding: 16px 0;
+				}
+
+					.subnav a.current-page, .subnav a:hover {
+						border-bottom: 1.5px solid var(--grey);
+						margin-bottom: -1.5px;
+					}
+
+
+
+/* Content */
+
+main {
+	margin-top: 48px;
+	margin-bottom: 48px;
+}
+
+	#color-box {
+		margin: 24px auto;
+		border-radius: 4px;
+		border: 1.5px solid var(--transparent-light);
+	}
+
+	label {
+		display: flex;
+		color: var(--dark-grey);
+		min-width: 5em;
+	}
+
+	.input-wrapper {
+		position: relative;
+	}
+
+		input {
+			color: inherit;
+			background-color: var(--light-grey);
+			border-radius: 4px 4px 0 0;
+			border: 0;
+			border-bottom: 1.5px solid var(--transparent-light);
+			padding: 8px;
+			font-size: inherit;
+			font-family: inherit;
+			box-sizing: border-box;
+			width: 100%;
+		}
+
+		input:hover {
+			border-bottom: 1.5px solid var(--grey);
+		}
+
+			.copy {
+				position: absolute;
+				padding: 4px;
+				bottom: 5.5px;
+				right: 4px;
+			}
+
+			.copy::before {
+				font-family: 'FontAwesome';
+				content: "\f24d";
+			}
+
+			.copy.copied::before {
+				font-family: inherit;
+				color: border;
+				content: "Copied!";
+			}
+
+	.row {
+		display: flex;
+		gap: 32px;
+		justify-content: center;
+		flex-wrap: wrap;
+		margin: 32px 0;
+	}
+
+		.container {
+			display: inline-block;
+			width: 240px;
+		}
+
+			.slider {
+				display: flex;
+				margin: 12px 0;
+			}
+
+				input[type="range"] {
+					height: 16px;
+					border: 0;
+					border-radius: 80px;
+					padding: 0;
+					box-shadow: inset 0 0 0 1.5px var(--transparent-light);
+				}
+
+					input[type="range"]::-webkit-slider-thumb {
+						-webkit-appearance: none;
+						width: 24px;
+						height: 24px;
+						border: 8px solid var(--light);
+						border-radius: 50%;
+						cursor: pointer;
+						box-shadow: 0 1px 4px rgba(0,0,0,.5);
+					}

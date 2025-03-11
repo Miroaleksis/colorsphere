@@ -38,7 +38,7 @@ customElements.define('my-subnav', MySubnav);
 
 //Current page
 document.addEventListener("DOMContentLoaded", function () {
-    let links = document.querySelectorAll("nav a");
+    let links = document.querySelectorAll("a");
     let currentUrl = window.location.pathname.split("/").pop();
 
     links.forEach(link => {

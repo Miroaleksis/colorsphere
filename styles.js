@@ -37,11 +37,13 @@ customElements.define('my-subnav', MySubnav);
 
 
 //Current page
-document.querySelectorAll('a').forEach(function (link) {
-    // Poistetaan mahdollinen index.html URL:sta vertailua varten
-    const normalizeUrl = (url) => url.replace(/index\.html$/, '').replace(/\/$/, '');
-    
-    if (normalizeUrl(link.href) === normalizeUrl(window.location.href)) {
+document.querySelectorAll('a').forEach(function(link) {
+    const linkPath = link.getAttribute('href');  // Hakee linkin alkuperäisen href-arvon
+    const currentPath = window.location.pathname; // Hakee nykyisen polun ilman domainia
+
+    // Jos linkin href on index.html tai polku on juuripolku ('/')
+    if (link.href === window.location.href || 
+        (linkPath === 'index.html' && (currentPath === '/' || currentPath === '/index.html'))) {
         link.classList.add('current-page');
     }
 });

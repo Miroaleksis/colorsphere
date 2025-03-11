@@ -39,10 +39,11 @@ customElements.define('my-subnav', MySubnav);
 //Current page
 document.addEventListener("DOMContentLoaded", function () {
     let links = document.querySelectorAll("a");
-    let currentUrl = window.location.pathname.split("/").pop();
+    let currentPath = window.location.pathname;
 
     links.forEach(link => {
-        if (link.getAttribute("href") === currentUrl) {
+        let linkPath = new URL(link.href, window.location.origin).pathname;
+        if (currentPath === linkPath) {
             link.classList.add("current");
         }
     });

@@ -40,6 +40,8 @@ customElements.define('my-subnav', MySubnav);
 document.querySelectorAll('a').forEach(function(link) {
 	if (link.href === window.location.href) {
 		link.classList.add('current-page');
+	} else if (link.getAttribute('href') === 'index.html' && window.location.pathname === '/') {
+		link.classList.add('current-page');
 	}
 });
 

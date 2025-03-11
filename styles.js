@@ -37,16 +37,12 @@ customElements.define('my-subnav', MySubnav);
 
 
 //Current page
-document.addEventListener("DOMContentLoaded", function () {
-    let links = document.querySelectorAll("a");
-    let currentPath = window.location.pathname;
-
-    links.forEach(link => {
-        let linkPath = new URL(link.href, window.location.origin).pathname;
-        if (currentPath === linkPath) {
-            link.classList.add("current");
-        }
-    });
+document.querySelectorAll('a').forEach(function(link) {
+	if (link.href === window.location.href) {
+		link.classList.add('current-page');
+	} else if (link.getAttribute('href') === 'index.html' && window.location.pathname === '/') {
+		link.classList.add('current-page');
+	}
 });
 
 

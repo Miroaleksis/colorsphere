@@ -37,15 +37,15 @@ customElements.define('my-subnav', MySubnav);
 
 
 //Current page
-document.querySelectorAll('a').forEach(function(link) {
-    const linkPath = link.getAttribute('href');  // Hakee linkin alkuperäisen href-arvon
-    const currentPath = window.location.pathname; // Hakee nykyisen polun ilman domainia
+document.addEventListener("DOMContentLoaded", function () {
+    let links = document.querySelectorAll("nav a");
+    let currentUrl = window.location.pathname.split("/").pop();
 
-    // Jos linkin href on index.html tai polku on juuripolku ('/')
-    if (link.href === window.location.href || 
-        (linkPath === 'index.html' && (currentPath === '/' || currentPath === '/index.html'))) {
-        link.classList.add('current-page');
-    }
+    links.forEach(link => {
+        if (link.getAttribute("href") === currentUrl) {
+            link.classList.add("current");
+        }
+    });
 });
 
 

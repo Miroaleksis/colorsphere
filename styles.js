@@ -37,13 +37,12 @@ customElements.define('my-subnav', MySubnav);
 
 
 //Current page
-document.querySelectorAll('a').forEach(function (link) {
-    // Poistetaan mahdollinen index.html URL:sta vertailua varten
-    const normalizeUrl = (url) => url.replace(/index\.html$/, '').replace(/\/$/, '');
-    
-    if (normalizeUrl(link.href) === normalizeUrl(window.location.href)) {
-        link.classList.add('current-page');
-    }
+document.querySelectorAll('a').forEach(function(link) {
+	if (link.href === window.location.href) {
+		link.classList.add('current-page');
+	} else if (link.getAttribute('href') === 'index.html' && window.location.pathname === '/') {
+		link.classList.add('current-page');
+	}
 });
 
 

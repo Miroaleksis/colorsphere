@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="styles.css" rel="stylesheet" type="text/css">
+	<script defer src="styles.js"></script>
+	<script defer src="events.js"></script>
+    <title>Contrast checker</title>
+</head>
+
+<body>
+	<my-header></my-header>
+	<my-subnav></my-subnav>
+	
+	<main>
+		<h1>Contrast checker</h1>
+		<div class="row">
+			<div id="foreground">
+				<h3>Foreground</h3>
+				<div class="color-container" style="width: 240px">
+					<input type="color" value="#ff0000" class="color-box">
+				</div>
+			</div>
+			<div id="background">
+				<h3>Background</h3>
+				<div class="color-container" style="width: 240px">
+					<input type="color" value="#ffffff" class="color-box">
+				</div>
+			</div>
+		</div>
+		<h2>Results</h2>
+		<div style="max-width: 512px; margin: 0 auto;">
+			<div class="bar">
+				<label for="contrast">Contrast Ratio:</label>
+				<span id="contrast"></span>
+			</div>
+			<table>
+				<thead>
+					<tr>
+						<th>Element type</th>
+						<th>WCAG AA</th>
+						<th>WCAG AAA</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<th scope="row">Normal text</th>
+						<td class="result normal-aa"></td>
+						<td class="result normal-aaa"></td>
+					</tr>
+					<tr>
+						<th scope="row">Large text</th>
+						<td class="result large-aa"></td>
+						<td class="result large-aaa"></td>
+					</tr>
+					<tr>
+						<th scope="row">UI components</th>
+						<td class="result ui-aa"></td>
+						<td class="result ui-aaa"></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</main>
+
+	<script>
+	const foreground = document.querySelector('#foreground .color-box');
+	const background = document.querySelector('#background .color-box');		
+		
+	function hexToRGB(hex) {
+		const bigint = parseInt(hex.slice(1), 16);
+		return [(bigint >> 16) & 255, (bigint >> 8) & 255, bigint & 255];
+	}
+
+	function getLuminance([r, g, b]) {
+		const a = [r, g, b].map(value => {
+			value /= 255;
+			return value <= 0.03928 ? value / 12.92 : Math.pow((value + 0.055) / 1.055, 2.4);
+		});
+		return 0.2126 * a[0] + 0.7152 * a[1] + 0.0722 * a[2];
+	}
+
+	function getContrastRatio(lum1, lum2) {
+		const brightest = Math.max(lum1, lum2);
+		const darkest = Math.min(lum1, lum2);
+		return (brightest + 0.05) / (darkest + 0.05);
+	}
+
+	function updateContrast() {
+		const lum1 = getLuminance(hexToRGB(foreground.value));
+		const lum2 = getLuminance(hexToRGB(background.value));
+		const contrastRatio = getContrastRatio(lum1, lum2);
+		document.getElementById('contrast').textContent = `${contrastRatio.toFixed(2)}`;
+
+		// WCAG thresholds
+		const normalAAMin = 4.5;
+		const normalAAAMin = 7.0;
+		const largeAAMin = 3.0;
+		const largeAAAMin = 4.5;
+		const uiAAMin = 3.0;
+		const uiAAAMin = 4.5;
+
+		// Update table
+		updateResult('.normal-aa', contrastRatio >= normalAAMin);
+		updateResult('.normal-aaa', contrastRatio >= normalAAAMin);
+		updateResult('.large-aa', contrastRatio >= largeAAMin);
+		updateResult('.large-aaa', contrastRatio >= largeAAAMin);
+		updateResult('.ui-aa', contrastRatio >= uiAAMin);
+		updateResult('.ui-aaa', contrastRatio >= uiAAAMin);
+	}
+
+	function updateResult(selector, isPass) {
+		const element = document.querySelector(selector);
+		element.textContent = isPass ? 'Pass' : 'Fail';
+		element.classList.toggle('pass', isPass);
+		element.classList.toggle('fail', !isPass);
+	}
+
+	// Handle color input change
+	foreground.addEventListener('input', updateContrast);
+	background.addEventListener('input', updateContrast);
+
+	// Initial calculation
+	updateContrast();
+	</script>
+
+</body>
+
+</html>

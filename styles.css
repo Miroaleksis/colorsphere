@@ -212,8 +212,6 @@ main {
 				min-height: 64px;
 				padding: 0;
 				cursor: pointer;
-				mask: none;
-  				-webkit-mask: none;
 			}
 
 				input[type="color"]::-webkit-color-swatch-wrapper {

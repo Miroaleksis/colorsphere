@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="styles.css" rel="stylesheet" type="text/css">
+	<script defer src="styles.js"></script>
+	<script defer src="events.js"></script>
+    <title>Color converter</title>
+</head>
+
+<body>
+	<my-header></my-header>
+	<my-subnav></my-subnav>
+	
+	<main class="color-container">
+		<h1>Color converter</h1>
+		<div class="container">
+			<input type="color" class="color-picker" style="width: 160px; height: 160px;" value="#FFFFFF" id="base-color">
+			<div class="input-wrapper">
+				<label for="hex">HEX</label>
+				<input type="text" class="hex" maxlength="7">
+				<button class="copy"></button>
+			</div>
+		</div>
+		<div class="row">
+			<div class="container">
+				<div class="input-wrapper">
+					<label for="rgb">RGB</label>
+					<input type="text" class="rgb">
+					<button class="copy"></button>
+				</div>
+				<div class="slider">
+					<label for="red">Red</label>
+					<input type="range" min="0" max="255" class="red">
+				</div>
+				<div class="slider">
+					<label for="green">Green</label>
+					<input type="range" min="0" max="255" class="green">
+				</div>
+				<div class="slider">
+					<label for="blue">Blue</label>
+					<input type="range" min="0" max="255" class="blue">
+				</div>
+			</div>
+			<div class="container">
+				<div class="input-wrapper">
+					<label for="hsl">HSL</label>
+					<input type="text" class="hsl">
+					<button class="copy"></button>
+				</div>
+				<div class="slider">
+					<label for="hue">Hue</label>
+					<input type="range" min="0" max="359" class="hue">
+				</div>
+				<div class="slider">
+					<label for="saturation">Saturation</label>
+					<input type="range" min="0" max="100" class="saturation">
+				</div>
+				<div class="slider">
+					<label for="lightness">Lightness</label>
+					<input type="range" min="0" max="100" class="lightness">
+				</div>
+			</div>
+			<div class="container">
+				<div class="input-wrapper">
+					<label for="cmyk">CMYK</label>
+					<input type="text" class="cmyk">
+					<button class="copy"></button>
+				</div>
+				<div class="slider">
+					<label for="cyan">Cyan</label>
+					<input type="range" min="0" max="100" class="cyan">
+				</div>
+				<div class="slider">
+					<label for="magenta">Magenta</label>
+					<input type="range" min="0" max="100" class="magenta">
+				</div>
+				<div class="slider">
+					<label for="yellow">Yellow</label>
+					<input type="range" min="0" max="100" class="yellow">
+				</div>
+				<div class="slider">
+					<label for="black">Key(black)</label>
+					<input type="range" min="0" max="100" class="black">
+				</div>
+			</div>
+		</div>
+	</main>
+
+</body>
+
+</html>

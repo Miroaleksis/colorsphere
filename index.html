@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="styles.css" rel="stylesheet" type="text/css">
+	<script defer src="styles.js"></script>
+	<script defer src="events.js"></script>
+    <title>Color converter</title>
+</head>
+
+<body>
+	<my-header></my-header>
+	<my-subnav></my-subnav>
+	
+	<main class="color-container">
+		<h1>Color converter</h1>
+		<div class="container">
+			<input type="color" class="color-picker card" style="height: 120px;" value="#FFFFFF" id="base-color" aria-label="Color picker">
+			<div class="input-wrapper">
+				<label>HEX<input type="text" class="hex" maxlength="7"></label>
+				<button class="copy" aria-label="copy hex"></button>
+			</div>
+		</div>
+		<div class="row">
+			<div class="container">
+				<div class="input-wrapper">
+					<label>RGB<input type="text" class="rgb"></label>
+					<button class="copy" aria-label="copy rgb"></button>
+				</div>
+				<label class="slider">Red<input type="range" min="0" max="255" class="red"></label>		
+				<label class="slider">Green<input type="range" min="0" max="255" class="green"></label>
+				<label class="slider">Blue <input type="range" min="0" max="255" class="blue"></label>				
+			</div>
+			<div class="container">
+				<div class="input-wrapper">
+					<label>HSL<input type="text" class="hsl"></label>
+					<button class="copy" aria-label="copy hsl"></button>
+				</div>
+				<label class="slider">Hue<input type="range" min="0" max="359" class="hue"></label>
+				<label class="slider">Saturation<input type="range" min="0" max="100" class="saturation"></label>
+				<label class="slider">Lightness<input type="range" min="0" max="100" class="lightness"></label>
+			</div>
+			<div class="container">
+				<div class="input-wrapper">
+					<label>CMYK<input type="text" class="cmyk"></label>
+					<button class="copy" aria-label="copy cmyk"></button>
+				</div>
+				<label class="slider">Cyan<input type="range" min="0" max="100" class="cyan"></label>			
+				<label class="slider">Magenta<input type="range" min="0" max="100" class="magenta"></label>
+				<label class="slider">Yellow<input type="range" min="0" max="100" class="yellow"></label>
+				<label class="slider">Key(black)<input type="range" min="0" max="100" class="black"></label>	
+			</div>
+		</div>
+	</main>
+
+</body>
+
+</html>
